@@ -1,7 +1,7 @@
+<!-- sección 2 -->
 <div class="container mt-5">
-  <div class="alert" 
-       [class.alert-primary]="form.get('modulo')?.value === 'CESAR'"
-       [class.alert-info]="form.get('modulo')?.value === 'ATBASH'">
+  <div class="alert" [class.alert-primary]="form.get('modulo')?.value === 'CESAR'"
+    [class.alert-info]="form.get('modulo')?.value === 'ATBASH'">
     <h2 class="text-center">MÓDULO ACTIVO: {{ form.get('modulo')?.value }}</h2>
     <p class="text-center mb-0">Modo: {{ form.get('operacion')?.value }}</p>
   </div>
@@ -21,7 +21,7 @@
         <div class="btn-group w-100">
           <input type="radio" class="btn-check" formControlName="operacion" value="CIFRAR" id="cifrar">
           <label class="btn btn-outline-success" for="cifrar">Cifrar</label>
-          
+
           <input type="radio" class="btn-check" formControlName="operacion" value="DESCIFRAR" id="descifrar">
           <label class="btn btn-outline-danger" for="descifrar">Descifrar</label>
         </div>
@@ -35,10 +35,10 @@
     </div>
 
     @if (form.get('modulo')?.value === 'CESAR') {
-      <div class="mb-3">
-        <label class="form-label">Desplazamiento (Key):</label>
-        <input type="number" formControlName="desplazamiento" class="form-control">
-      </div>
+    <div class="mb-3">
+      <label class="form-label">Desplazamiento (Key):</label>
+      <input type="number" formControlName="desplazamiento" class="form-control">
+    </div>
     }
 
     <div class="mb-3">
@@ -52,9 +52,9 @@
   </form>
 
   @if (resultado) {
-    <div class="mt-4 p-4 bg-white border rounded shadow-sm">
-      <h4>Resultado Final:</h4>
-      <p class="display-6 text-break">{{ resultado }}</p>
-    </div>
+  <div class="mt-4 p-4 bg-white border rounded shadow-sm">
+    <h4>Resultado Final:</h4>
+    <p class="display-6 text-break">{{ resultado }}</p>
+  </div>
   }
 </div>

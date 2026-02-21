@@ -10,15 +10,12 @@ export class CifrarService {
   //sección 3.1
   procesar1(mensaje: string, alfabeto: string, desplazamiento: number, cifrar: boolean): string {
     const L = alfabeto.length;
-
-    // ajuste negativos
     const shift = cifrar ? desplazamiento : -desplazamiento;
 
     return mensaje.split('').map(char => {
       const index = alfabeto.indexOf(char);
       if (index === -1) return char;
 
-      // loop
       let nuevoIndex = (index + shift) % L;
       if (nuevoIndex < 0) nuevoIndex += L;
 
