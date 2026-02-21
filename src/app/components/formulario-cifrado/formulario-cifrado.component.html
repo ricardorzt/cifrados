@@ -1,0 +1,60 @@
+<div class="container mt-5">
+  <div class="alert" 
+       [class.alert-primary]="form.get('modulo')?.value === 'CESAR'"
+       [class.alert-info]="form.get('modulo')?.value === 'ATBASH'">
+    <h2 class="text-center">MÓDULO ACTIVO: {{ form.get('modulo')?.value }}</h2>
+    <p class="text-center mb-0">Modo: {{ form.get('operacion')?.value }}</p>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="ejecutar()" class="card p-4 shadow-sm">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label font-weight-bold">Seleccionar Tipo de Cifrado:</label>
+        <select formControlName="modulo" class="form-select">
+          <option value="CESAR">Cifrado César</option>
+          <option value="ATBASH">Cifrado Atbash</option>
+        </select>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label font-weight-bold">Acción:</label>
+        <div class="btn-group w-100">
+          <input type="radio" class="btn-check" formControlName="operacion" value="CIFRAR" id="cifrar">
+          <label class="btn btn-outline-success" for="cifrar">Cifrar</label>
+          
+          <input type="radio" class="btn-check" formControlName="operacion" value="DESCIFRAR" id="descifrar">
+          <label class="btn btn-outline-danger" for="descifrar">Descifrar</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Conjunto de Caracteres (Base ASCII):</label>
+      <input type="text" formControlName="alfabeto" class="form-control text-monospace">
+      <small class="text-muted">Solo se procesarán los caracteres incluidos en esta lista.</small>
+    </div>
+
+    @if (form.get('modulo')?.value === 'CESAR') {
+      <div class="mb-3">
+        <label class="form-label">Desplazamiento (Key):</label>
+        <input type="number" formControlName="desplazamiento" class="form-control">
+      </div>
+    }
+
+    <div class="mb-3">
+      <label class="form-label">Entrada de Texto:</label>
+      <textarea formControlName="mensaje" class="form-control" rows="3" placeholder="Escribe aquí..."></textarea>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid" class="btn btn-dark btn-lg w-100">
+      PROCESAR {{ form.get('modulo')?.value }}
+    </button>
+  </form>
+
+  @if (resultado) {
+    <div class="mt-4 p-4 bg-white border rounded shadow-sm">
+      <h4>Resultado Final:</h4>
+      <p class="display-6 text-break">{{ resultado }}</p>
+    </div>
+  }
+</div>
