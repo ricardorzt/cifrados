@@ -20,8 +20,8 @@ export class FormularioCifradoComponent {
     this.form = this.fb.group({
       modulo: ['CESAR', Validators.required],
       operacion: ['CIFRAR', Validators.required],
-      alfabeto: ['ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', Validators.required],
-      desplazamiento: [3, [Validators.min(1)]],
+      alfabeto: ['abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', Validators.required],
+      desplazamiento: [3, [Validators.min(1), Validators.pattern('^[0-9]*$')]],
       mensaje: ['', Validators.required]
     });
   }

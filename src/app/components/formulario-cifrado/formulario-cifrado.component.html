@@ -2,10 +2,12 @@
 <div class="container mt-5">
   <div class="alert" [class.alert-primary]="form.get('modulo')?.value === 'CESAR'"
     [class.alert-info]="form.get('modulo')?.value === 'ATBASH'">
-    <h2 class="text-center">MÓDULO ACTIVO: {{ form.get('modulo')?.value }}</h2>
+    <h2 class="text-center">CIFRADO Y DESCIFRADO</h2>
     <p class="text-center mb-0">Modo: {{ form.get('operacion')?.value }}</p>
+    <p class="text-center mb-1">Ricardo Ramírez Torres</p>
   </div>
 
+  <!-- sección 2.1 -->
   <form [formGroup]="form" (ngSubmit)="ejecutar()" class="card p-4 shadow-sm">
     <div class="row">
       <div class="col-md-6 mb-3">
@@ -34,10 +36,12 @@
       <small class="text-muted">Solo se procesarán los caracteres incluidos en esta lista.</small>
     </div>
 
+    <!-- sección 2.2 -->
     @if (form.get('modulo')?.value === 'CESAR') {
     <div class="mb-3">
       <label class="form-label">Desplazamiento (Key):</label>
-      <input type="number" formControlName="desplazamiento" class="form-control">
+      <input type="number" formControlName="desplazamiento" class="form-control" step="1"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57" placeholder="Ej: 3">
     </div>
     }
 
@@ -51,6 +55,7 @@
     </button>
   </form>
 
+  <!-- sección 2.3 -->
   @if (resultado) {
   <div class="mt-4 p-4 bg-white border rounded shadow-sm">
     <h4>Resultado Final:</h4>
