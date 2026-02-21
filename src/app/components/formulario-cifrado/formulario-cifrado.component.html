@@ -3,7 +3,6 @@
   <div class="alert" [class.alert-primary]="form.get('modulo')?.value === 'CESAR'"
     [class.alert-info]="form.get('modulo')?.value === 'ATBASH'">
     <h2 class="text-center">CIFRADO Y DESCIFRADO</h2>
-    <p class="text-center mb-0">Modo: {{ form.get('operacion')?.value }}</p>
     <p class="text-center mb-1">Ricardo Ramírez Torres</p>
   </div>
 
@@ -36,7 +35,7 @@
       <small class="text-muted">Solo se procesarán los caracteres incluidos en esta lista.</small>
     </div>
 
-    <!-- sección 2.2 -->
+
     @if (form.get('modulo')?.value === 'CESAR') {
     <div class="mb-3">
       <label class="form-label">Desplazamiento (Key):</label>
@@ -44,7 +43,7 @@
         onkeypress="return event.charCode >= 48 && event.charCode <= 57" placeholder="Ej: 3">
     </div>
     }
-
+    <!-- sección 2.2 -->
     <div class="mb-3">
       <label class="form-label">Entrada de Texto:</label>
       <textarea formControlName="mensaje" class="form-control" rows="3" placeholder="Escribe aquí..."></textarea>
