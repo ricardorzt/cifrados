@@ -14,6 +14,7 @@ export class FormularioCifradoComponent {
   form: FormGroup;
   resultado: string = '';
 
+  //sección 1.1
   constructor(private fb: FormBuilder, private service: CifrarService) {
     this.form = this.fb.group({
       modulo: ['CESAR', Validators.required],
@@ -24,14 +25,15 @@ export class FormularioCifradoComponent {
     });
   }
 
+  //sección 1.2
   ejecutar() {
     const { modulo, operacion, alfabeto, desplazamiento, mensaje } = this.form.value;
     const esCifrado = operacion === 'CIFRAR';
 
     if (modulo === 'CESAR') {
-      this.resultado = this.service.procesarCesar(mensaje, alfabeto, desplazamiento, esCifrado);
+      this.resultado = this.service.procesar1(mensaje, alfabeto, desplazamiento, esCifrado);
     } else {
-      this.resultado = this.service.procesarAtbash(mensaje, alfabeto);
+      this.resultado = this.service.procesar2(mensaje, alfabeto);
     }
   }
 }
